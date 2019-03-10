@@ -57,7 +57,8 @@ head(str(dataAll),2)
 write.table(dataAll, "TidyData.txt", row.name=FALSE)
 ```
 ## There are TidyData.txt:
+```
 The first row is the header containing the names for each column.
 180 groups (30 subjects and 6 activities)
 71 columns – 33 Mean variables + 33 Standard deviation variables + 1 subject( 1 of of the 30 test subjects) + activityName + activityNum + activityName.x + activityName.y
-
+```
