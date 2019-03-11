@@ -20,6 +20,9 @@ features <- read.table("UCI HAR Dataset/features.txt")
 ## Merges the training and the test sets to create one data set. 
 
 ```
+library(dplyr)
+library(data.table)
+library(tidyr)
 alldataSubject <- rbind(subject_train, subject_test)
 setnames(alldataSubject, "V1", "subject")
 alldataTable <- rbind(Data_train, Data_test)
@@ -41,7 +44,6 @@ dataAll<- subset(dataAll,select=FeaturesMeanStd)
 ## Uses descriptive activity names to name the activities in the data set
 
 ```
-library(dplyr)
 library(gapminder)
 dataAll <- merge(activity_labels, dataAll , by="activityNum", all.x=TRUE)
 dataAll$activityName <- as.character(dataAll$activityName)
@@ -51,6 +53,10 @@ dataAll<- tbl_df(arrange(dataNew,subject,activityName))
 ## Appropriately labels the data set with descriptive variable names
 ```
 head(str(dataAll),2)
+names(dataAll)<-gsub("std()", "SD", names(dataAll))
+names(dataAll)<-gsub("mean()", "MEAN", names(dataAll))
+names(dataAll)<-gsub("^t", "time", names(dataAll))
+names(dataAll)<-gsub("^f", "frequency", names(dataAll))
 ```
 ## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 ```
