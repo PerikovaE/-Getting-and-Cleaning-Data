@@ -1,3 +1,9 @@
+fileName <- "Smartphones.zip"
+url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+dir <- "Smartphones"
+download.file(url,fileName, mode = "wb") 
+unzip("Smartphones.zip", files = NULL, exdir=".")
+
 subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt")
 subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt")
 Data_test <- read.table("UCI HAR Dataset/test/X_test.txt")
